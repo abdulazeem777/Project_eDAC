@@ -29,23 +29,5 @@ public class EditHotelController {
 		return modelAndView;
 	}
 	
-	//Edit Details of hotels
-	@PostMapping("/editHotel")
-	public ModelAndView updateHotelDetails(ModelAndView modelandview, @ModelAttribute Hotel hotel, @RequestParam String hotelname, ModelMap models) {
-		System.out.println("hi");
-		System.out.println("hotelname: " + hotel.getHotelname());
-		boolean status = hotelService.updateHotel(hotel,hotelname);
-		if(status == true) {
-			
-			modelandview.setViewName("redirect:/editHotel");
-		}
-		else
-		{
-			models.addAttribute("error","No hotel found");
-			modelandview.setViewName("editHotel");
-		}
-		return modelandview;
-		
-	}
 
 }

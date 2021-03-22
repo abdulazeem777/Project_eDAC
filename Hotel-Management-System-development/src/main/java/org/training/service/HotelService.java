@@ -1,5 +1,9 @@
 package org.training.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.modal.CResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.training.entity.Hotel;
@@ -15,30 +19,49 @@ public class HotelService {
 	private HotelRepository hotelRepository;
 	
 	//Adding new Hotel
-	public boolean saveHotel(Hotel hotel, String hotelname) {
-		if(hotelRepository.findById(hotelname).isPresent())
+	public CResult saveHotel(Hotel hotel) {
+		if(hotelRepository.findById(hotel.getHotelname()).isPresent())
 		{
-			return true;
+			return new CResult(400, hotel, "Hotel details already exists");
 		}
 		else
 		{
-			hotelRepository.save(hotel);
-			return false;
+			Hotel h = hotelRepository.save(hotel);
+			return new CResult(200, h, "Hotel Created");
 		}
 		
 	}
 	
 	//update Hotel details
-	public boolean updateHotel(Hotel hotel, String hotelname) {
-		if(hotelRepository.findById(hotelname)!=null)
+	public CResult updateHotel(Hotel hotel) {
+		Optional findHotel = hotelRepository.findById(hotel.getHotelname());
+		if(findHotel.isPresent())
 		{
-			hotelRepository.delete(hotel);
-			hotelRepository.save(hotel);
-			return true;
+			Hotel h = hotelRepository.save(hotel);
+			return new CResult(200,h,"hotel details updated");
 		}
 		else
 		{
-			return false;
+			return new CResult(400,hotel,"hotel not found");
+		}
+	}
+	//get hotel details
+	public CResult getAllHoteldetails()
+	{
+		List<Hotel> hotels = hotelRepository.findAll();
+		return new CResult(200, hotels, "Getting hotel details successful");
+	}
+	//get hotel details by id
+	public CResult getDetailsByHotelname(String hotelname)
+	{
+		Optional h=hotelRepository.findById(hotelname);
+		if(h.isPresent())
+		{
+			Hotel hotel = (Hotel) h.get();
+			return new CResult(200, hotel, "Successfully found");
+		}
+		else {
+			return new CResult(400, hotelname, "Hotel not found");
 		}
 	}
 }
