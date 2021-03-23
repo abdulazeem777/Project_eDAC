@@ -43,31 +43,6 @@ public class MainController {
 	private HttpServletResponse response;*/
 	
 	//logging in customer
-	@PostMapping("/login")
-	public ModelAndView processingLoginForm(ModelAndView model, @RequestParam String email, @RequestParam String password, ModelMap models){
-		boolean status = userService.validate(email,password);
-		User user = userRepository.findByEmail(email);
-		System.out.println("login status:"+status);
-		if(status==true)
-		{
-			System.out.println(user.getUsername());
-			//request.setAttribute("username",user.getUsername());
-			//session.setAttribute("username",user.getUsername() );
-			//model.addObject("username",user.getUsername());
-			model.setViewName("redirect:/home");
-			return model;
-		}
-		else
-			{
-			models.addAttribute("error", "Please enter correct login details");
-			model.setViewName("login");
-			return model;
-			}
-		
-		
-		
-	}
-	
 	@GetMapping("/logout")
 	public ModelAndView logoutPage( ) {
 		
