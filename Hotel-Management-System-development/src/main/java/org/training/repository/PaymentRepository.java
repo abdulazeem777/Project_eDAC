@@ -9,6 +9,6 @@ import org.training.entity.PaymentDetails;
 
 //payment repository
 @Repository
-public interface PaymentRepository extends JpaRepository<PaymentDetails, String>{
+public interface PaymentRepository extends JpaRepository<PaymentDetails, Integer>{
 	
 }

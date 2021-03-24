@@ -21,20 +21,20 @@ public class CancelController {
 	}
 	
 	//Cancel Reservation of hotels
-	@PostMapping("/cancelReservation")
-	public ModelAndView cancelReservationDetails(ModelAndView modelAndView, @RequestParam String email, @RequestParam String hotelname) {
-		boolean status = paymentService.cancelReservation(email,hotelname);
-		if(status) {
-			modelAndView.addObject("success", "Successfully Deleted");
-			modelAndView.setViewName("cancelReservation");
-			return modelAndView;
-		}
-		else {
-			modelAndView.setViewName("cancelReservation");
-			modelAndView.addObject("fail", "Invalid details, cannot delete record");
-			return modelAndView;
-		}
-		
-	}
+//	@PostMapping("/cancelReservation")
+//	public ModelAndView cancelReservationDetails(ModelAndView modelAndView, @RequestParam String email, @RequestParam String hotelname) {
+//		boolean status = paymentService.cancelReservation(email,hotelname);
+//		if(status) {
+//			modelAndView.addObject("success", "Successfully Deleted");
+//			modelAndView.setViewName("cancelReservation");
+//			return modelAndView;
+//		}
+//		else {
+//			modelAndView.setViewName("cancelReservation");
+//			modelAndView.addObject("fail", "Invalid details, cannot delete record");
+//			return modelAndView;
+//		}
+//		
+//	}
 
 }

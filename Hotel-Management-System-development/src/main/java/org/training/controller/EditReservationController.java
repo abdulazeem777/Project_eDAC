@@ -23,22 +23,22 @@ public class EditReservationController {
 	
 	
 	//updating reservation details
-	@PostMapping("/editReservation")
-	public ModelAndView editReservationDetailsPage(ModelAndView modelAndView, @ModelAttribute PaymentDetails pay, @RequestParam String email)	{
-		boolean status = paymentService.updateReservation(pay,email);
-		if(status) {
-			modelAndView.addObject("success", "Successfully updated");
-			modelAndView.setViewName("editReservation");
-			return modelAndView;
-		}
-		else
-		{
-			modelAndView.setViewName("editReservation");
-			modelAndView.addObject("fail", "Not Successfully updated, Incorrect User account");
-			return modelAndView;
-		}
-		
-	}
+//	@PostMapping("/editReservation")
+//	public ModelAndView editReservationDetailsPage(ModelAndView modelAndView, @ModelAttribute PaymentDetails pay, @RequestParam String email)	{
+//		boolean status = paymentService.updateReservation(pay,email);
+//		if(status) {
+//			modelAndView.addObject("success", "Successfully updated");
+//			modelAndView.setViewName("editReservation");
+//			return modelAndView;
+//		}
+//		else
+//		{
+//			modelAndView.setViewName("editReservation");
+//			modelAndView.addObject("fail", "Not Successfully updated, Incorrect User account");
+//			return modelAndView;
+//		}
+//		
+//	}
 	
 	
 }

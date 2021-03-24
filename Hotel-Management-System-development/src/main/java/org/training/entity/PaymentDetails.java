@@ -2,6 +2,8 @@ package org.training.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,6 +14,9 @@ import javax.persistence.Table;
 public class PaymentDetails {
 	
 	@Id
+	@GeneratedValue(strategy  = GenerationType.AUTO)
+	private int bookingId;
+	
 	@Column(name="email")
 	/*@NotEmpty(message = "Please provide a hotel name")*/
 	private String email;
@@ -28,6 +33,16 @@ public class PaymentDetails {
 	@Column(name="price")
 	/*@NotEmpty(message = "Please provide a rating for hotel")*/
 	private String price;
+	
+	
+
+	public int getBookingId() {
+		return bookingId;
+	}
+
+	public void setBookingId(int bookingId) {
+		this.bookingId = bookingId;
+	}
 
 	public String getEmail() {
 		return email;

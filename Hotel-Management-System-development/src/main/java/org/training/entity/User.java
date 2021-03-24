@@ -1,11 +1,16 @@
 package org.training.entity;
 
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -23,6 +28,9 @@ public class User {
     //@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	@Column(name="id")
 	private int id;
+	
+	@OneToMany(cascade= CascadeType.ALL)
+	private List<PaymentDetails> bookings;
 	
 	@Column(name="name")
 	//@NotEmpty(message = "Please provide a name")
@@ -51,6 +59,14 @@ public class User {
 	private String country;
 
 	
+
+	public List<PaymentDetails> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<PaymentDetails> bookings) {
+		this.bookings = bookings;
+	}
 
 	public String getUsername() {
 		return username;
