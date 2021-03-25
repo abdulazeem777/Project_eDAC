@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.training.entity.PaymentDetails;
@@ -19,12 +20,12 @@ public class PaymentController {
 	private PaymentService paymentService;
 	
 	@GetMapping("/allPayment")
-	public CResult getPayment(int id) {
+	public CResult getPayment() {
 		return paymentService.getPayments();
 	}
 	
 	@PutMapping("/saveBooking")
-	public CResult createPayment(PaymentDetails pay) {
+	public CResult createPayment(@RequestBody PaymentDetails pay) {
 		return paymentService.savePayment(pay);
 	}
 }
