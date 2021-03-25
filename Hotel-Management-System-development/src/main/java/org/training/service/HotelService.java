@@ -3,7 +3,7 @@ package org.training.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.modal.CResult;
+import org.modal.CustomResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.training.entity.Hotel;
@@ -19,49 +19,49 @@ public class HotelService {
 	private HotelRepository hotelRepository;
 	
 	//Adding new Hotel
-	public CResult saveHotel(Hotel hotel) {
+	public CustomResponseEntity saveHotel(Hotel hotel) {
 		if(hotelRepository.findById(hotel.getHotelname()).isPresent())
 		{
-			return new CResult(400, hotel, "Hotel details already exists");
+			return new CustomResponseEntity(400, hotel, "Hotel details already exists");
 		}
 		else
 		{
 			Hotel h = hotelRepository.save(hotel);
-			return new CResult(200, h, "Hotel Created");
+			return new CustomResponseEntity(200, h, "Hotel Created");
 		}
 		
 	}
 	
 	//update Hotel details
-	public CResult updateHotel(Hotel hotel) {
+	public CustomResponseEntity updateHotel(Hotel hotel) {
 		Optional findHotel = hotelRepository.findById(hotel.getHotelname());
 		if(findHotel.isPresent())
 		{
 			Hotel h = hotelRepository.save(hotel);
-			return new CResult(200,h,"hotel details updated");
+			return new CustomResponseEntity(200,h,"hotel details updated");
 		}
 		else
 		{
-			return new CResult(400,hotel,"hotel not found");
+			return new CustomResponseEntity(400,hotel,"hotel not found");
 		}
 	}
 	//get hotel details
-	public CResult getAllHoteldetails()
+	public CustomResponseEntity getAllHoteldetails()
 	{
 		List<Hotel> hotels = hotelRepository.findAll();
-		return new CResult(200, hotels, "Getting hotel details successful");
+		return new CustomResponseEntity(200, hotels, "Getting hotel details successful");
 	}
 	//get hotel details by id
-	public CResult getDetailsByHotelname(String hotelname)
+	public CustomResponseEntity getDetailsByHotelname(String hotelname)
 	{
 		Optional h=hotelRepository.findById(hotelname);
 		if(h.isPresent())
 		{
 			Hotel hotel = (Hotel) h.get();
-			return new CResult(200, hotel, "Successfully found");
+			return new CustomResponseEntity(200, hotel, "Successfully found");
 		}
 		else {
-			return new CResult(400, hotelname, "Hotel not found");
+			return new CustomResponseEntity(400, hotelname, "Hotel not found");
 		}
 	}
 }

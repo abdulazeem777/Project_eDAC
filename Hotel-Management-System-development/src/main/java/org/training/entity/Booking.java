@@ -5,36 +5,35 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 //Object relational Model of payment details entity
 
 @Entity
-@Table(name="booking")
-public class PaymentDetails {
-	
-	@Id
-	@GeneratedValue(strategy  = GenerationType.AUTO)
-	private int bookingId;
-	
-	@Column(name="email")
-	/*@NotEmpty(message = "Please provide a hotel name")*/
-	private String email;
-	
+@Table(name = "booking")
+public class Booking {
 
-	@Column(name="hotelname")
-	/*@NotEmpty(message = "Please provide a user name")*/
-	private String hotelname;
-	
-	@Column(name="rooms")
-	/*@NotEmpty(message = "Please provide a rating for hotel")*/
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int bookingId;
+
+	private String email;
+
 	private String rooms;
-	
-	@Column(name="price")
-	/*@NotEmpty(message = "Please provide a rating for hotel")*/
+
 	private String price;
-	
-	
+
+	private String hotelname;
+
+	public String getHotelname() {
+		return hotelname;
+	}
+
+	public void setHotelname(String hotelname) {
+		this.hotelname = hotelname;
+	}
 
 	public int getBookingId() {
 		return bookingId;
@@ -52,14 +51,6 @@ public class PaymentDetails {
 		this.email = email;
 	}
 
-	public String getHotelname() {
-		return hotelname;
-	}
-
-	public void setHotelname(String hotelname) {
-		this.hotelname = hotelname;
-	}
-
 	public String getRooms() {
 		return rooms;
 	}
@@ -75,7 +66,5 @@ public class PaymentDetails {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	
-	
 
 }

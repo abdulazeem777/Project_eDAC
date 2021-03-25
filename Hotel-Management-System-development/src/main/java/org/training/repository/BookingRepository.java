@@ -4,11 +4,11 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.training.entity.PaymentDetails;
+import org.training.entity.Booking;
 
 
-//payment repository
+//booking repository
 @Repository
-public interface PaymentRepository extends JpaRepository<PaymentDetails, Integer>{
+public interface BookingRepository extends JpaRepository<Booking, Integer>{
 	
 }

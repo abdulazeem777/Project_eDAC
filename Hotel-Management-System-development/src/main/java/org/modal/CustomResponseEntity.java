@@ -2,7 +2,7 @@ package org.modal;
 
 import org.training.entity.Hotel;
 
-public class CResult {
+public class CustomResponseEntity {
 	
 	private int status;
 	private Object content; // will have account details of inserted, updated, deleted
@@ -25,10 +25,10 @@ public class CResult {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-	public CResult() {
+	public CustomResponseEntity() {
 		// TODO Auto-generated constructor stub
 	}
-	public CResult(int status, Object content, String reason) {
+	public CustomResponseEntity(int status, Object content, String reason) {
 
 		this.status = status;
 		this.content = content;

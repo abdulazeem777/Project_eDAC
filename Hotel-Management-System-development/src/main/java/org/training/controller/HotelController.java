@@ -2,7 +2,7 @@ package org.training.controller;
 
 import java.util.List;
 
-import org.modal.CResult;
+import org.modal.CustomResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,21 +27,21 @@ public class HotelController {
 	
 
 	@PutMapping("/addNewHotel")
-	public CResult addNewHotel(@RequestBody Hotel hotel) {
+	public CustomResponseEntity addNewHotel(@RequestBody Hotel hotel) {
 		return hotelService.saveHotel(hotel);
 	}
 	@PostMapping("/updateHotel")
-	public CResult updateHotel(@RequestBody Hotel hotel)
+	public CustomResponseEntity updateHotel(@RequestBody Hotel hotel)
 	{
 		return hotelService.updateHotel(hotel);
 	}
 	@GetMapping("/getAllHoteldetails")
-	public CResult getAllHoteldetails()
+	public CustomResponseEntity getAllHoteldetails()
 	{
 		return hotelService.getAllHoteldetails();
 	}
 	@GetMapping("/getDetailsByHotelname/{hotelName}")
-	public CResult getDetailsByHotelname(@PathVariable String hotelName) {
+	public CustomResponseEntity getDetailsByHotelname(@PathVariable String hotelName) {
 		return hotelService.getDetailsByHotelname(hotelName);
 	}
 	

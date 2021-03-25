@@ -25,46 +25,29 @@ public class User {
 
 	
 	@GeneratedValue(strategy  = GenerationType.AUTO)
-    //@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	@Column(name="id")
 	private int id;
 	
 	@OneToMany(cascade= CascadeType.ALL)
-	private List<PaymentDetails> bookings;
+	private List<Booking> bookings;
 	
-	@Column(name="name")
-	//@NotEmpty(message = "Please provide a name")
 	private String name;
 	
-
-	@Column(name="username")
-	//@NotEmpty(message = "Please provide a user name")
 	private String username;
-	
-	@Column(name="phoneno")
-	//@NotEmpty(message = "Please provide an phone no")
+
 	private String phoneno;
 	
 	@Id
-	@Column(name="email", nullable = false)
-	//@Email(message="please provide a valid email")
-	//@NotEmpty(message = "Please provide an e-mail")
 	private String email;
 	
-	@Column(name="password")
 	private String password;
 	
-	@Column(name="country")
-	//@NotEmpty(message = "Please provide an country name")
 	private String country;
 
-	
-
-	public List<PaymentDetails> getBookings() {
+	public List<Booking> getBookings() {
 		return bookings;
 	}
 
-	public void setBookings(List<PaymentDetails> bookings) {
+	public void setBookings(List<Booking> bookings) {
 		this.bookings = bookings;
 	}
 
