@@ -17,21 +17,12 @@ public class Hotel {
 	
 	
 	@Id
-	@Column(name="hotelname")
-	/*@NotEmpty(message = "Please provide a hotel name")*/
 	private String hotelname;
 	
-
-	@Column(name="rooms")
-	/*@NotEmpty(message = "Please provide a user name")*/
 	private String rooms;
-	
-	@Column(name="rating")
-	/*@NotEmpty(message = "Please provide a rating for hotel")*/
+
 	private String rating;
-	
-	@Column(name="price")
-	/*@NotEmpty(message = "Please provide a rating for hotel")*/
+
 	private String price;
 
 	public String getHotelname() {
